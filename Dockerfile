@@ -19,5 +19,4 @@ WORKDIR /GraphBLAS
 # RUN git checkout tags/$SS_RELEASE
 RUN make clean
 RUN make library JOBS=$SS_JOBS
-RUN make tests
 RUN make install
