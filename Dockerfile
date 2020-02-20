@@ -12,10 +12,12 @@ RUN apt update && apt install -y \
     && rm -rf /var/lib/apt/lists/*
 
 ARG SS_RELEASE=3.2.0draft28
+ARG SS_JOBS=2
 
 COPY . /GraphBLAS
 WORKDIR /GraphBLAS
+# RUN git checkout tags/$SS_RELEASE
 RUN make clean
-RUN make library
+RUN make library JOBS=$SS_JOBS
 RUN make tests
 RUN make install
