@@ -1,0 +1,7 @@
+services:
+  - docker
+
+script:
+  - docker build -t graphblas/suitesparse-graphblas:${TRAVIS_COMMIT} .
+  - docker run -w /LAGraph -it graphblas/suitesparse-graphblas:${TRAVIS_COMMIT} make tests
+
